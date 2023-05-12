@@ -1,0 +1,30 @@
+.nav{
+    background-color:palevioletred;
+}
+
+.fav-icon{
+    color:white;
+    margin:10px;
+}
+
+button:active{
+    background-color: brown;
+    color:white;
+}
+
+.input-group{
+    margin-top:6px;
+    width:100px;
+    
+
+}
+
+.logout-btn{
+    background-color:transparent;
+    border-style:none;
+    color:white;
+    font-weight:600;
+}
+
+
+
