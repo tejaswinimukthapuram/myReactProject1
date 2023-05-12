@@ -20,6 +20,7 @@ import { useEffect } from 'react'
 import { getItems } from './reducers/itemSlice'
 import WishListPage from './pages/WishListPage'
 import ParentLayout from './pages/ParentLayout'
+import CardDetails from './pages/CardDetailsPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -50,6 +51,7 @@ function App() {
    <Route path="home2" element={<Home/>} />
    <Route path='/parent' element={<ParentLayout/>}>
    <Route path='home' element={<HomePage />} />
+   <Route path='carddetails' element={<  CardDetails/>}/>
     <Route path='wishlist' element={<WishListPage/>}/>
     </Route>
    <Route path="chatpage" element={<ChatPage />} />

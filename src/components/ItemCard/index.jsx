@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./index.css";
 import { Padding } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Index = (props) => {
   const { eachItem } = props;
@@ -14,6 +15,12 @@ const Index = (props) => {
     setIsWishListed(!isWishListed)
       console.log(`${id} is added to wishlist`)
   }
+
+  // const onItemCardClick=(item)=>{
+
+  // }
+
+  const itemData=eachItem
 
   return (
     <>
@@ -60,6 +67,7 @@ favorite
 </span>:<span className="material-icons-outlined">favorite_border</span>}
             
           </button>
+          <Link  to='/parent/carddetails' state={itemData}>Go To Details</Link>
         </div>
        
       </Card>
