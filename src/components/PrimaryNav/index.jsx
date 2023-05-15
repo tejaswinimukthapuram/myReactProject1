@@ -15,6 +15,7 @@ function BrandExample(props) {
     // cookie.Expires = DateTime.Now.AddDays(-1);
     // Response.Cookies.Clear();
     localStorage.removeItem("token");
+    localStorage.removeItem("userMail");
     navigate("/login");
   }
 

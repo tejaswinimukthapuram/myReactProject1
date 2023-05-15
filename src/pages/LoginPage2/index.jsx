@@ -80,7 +80,8 @@ import './index.css'
                     // console.log(document.cookie.sessionCookie)
                     // console.log(res.cookie)
                     localStorage.setItem("token", token)
-                    navigate("/home")
+                    localStorage.setItem("userMail",values.email)
+                    navigate("/parent/home")
 
                 }
                 

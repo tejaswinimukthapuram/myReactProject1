@@ -1,0 +1,28 @@
+.address-btn{
+    border-radius: 3px;
+    border-color:palevioletred;
+    color:palevioletred;
+    font-weight:700;
+    padding:3px;
+    background-color: transparent;
+    margin:5px;
+}
+
+.btn{
+    margin:5px;
+}
+
+.img{
+    width:100px;
+    height:150px;
+}
+
+.cancel-btn{
+    border-style:none;
+   
+    
+    font-weight:700;
+    padding:3px;
+    background-color: transparent;
+    
+}

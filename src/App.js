@@ -12,24 +12,33 @@ import Home from './pages/Home'
 import AdminPage from './pages/AdminPage'
 import ButtonComp from './components/ButtonComp'
 import Dashboard from './components/Dashboard'
-import ChatPage from './pages/ChatPage'
+
 import Protected from './pages/Protected'
 import HomePage from './pages/HomePage'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getItems } from './reducers/itemSlice'
+import { getCartItems } from './reducers/itemSlice'
 import WishListPage from './pages/WishListPage'
 import ParentLayout from './pages/ParentLayout'
 import CardDetails from './pages/CardDetailsPage'
+import { createContext } from 'react'
+import { useState } from 'react'
+import CartPage from './pages/CartPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 
 import './App.css';
 
+export const CartContext=createContext()
+
 function App() {
 
   const dispatch = useDispatch();
+const [cartItems,setCartItems]=useState([])
+
+
 
   useEffect(()=>{
 
@@ -39,8 +48,14 @@ function App() {
   }, [])
 
 
+  useEffect(()=>{
+    dispatch(getCartItems())
+  })
+
+
   return (
    <>
+   <CartContext.Provider value={[cartItems,setCartItems]}>
    <BrowserRouter>
    <Routes>
    <Route path="/" element={<SignupPage2/>} />
@@ -49,18 +64,25 @@ function App() {
    {/* <Route path="/main" element={<Dashboard/>}> */}
   
    <Route path="home2" element={<Home/>} />
+
+   
    <Route path='/parent' element={<ParentLayout/>}>
+
    <Route path='home' element={<HomePage />} />
    <Route path='carddetails' element={<  CardDetails/>}/>
     <Route path='wishlist' element={<WishListPage/>}/>
+    <Route path='cartpage' element={<CartPage/>}/>
     </Route>
-   <Route path="chatpage" element={<ChatPage />} />
+    
+
+  
    <Route element={<Protected />} >
     <Route path="button" element={<ButtonComp />} />
     </Route>
     {/* </Route> */}
    </Routes>
    </BrowserRouter>
+   </CartContext.Provider>
    </>
   );
 }

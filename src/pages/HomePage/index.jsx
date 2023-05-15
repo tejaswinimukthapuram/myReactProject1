@@ -6,6 +6,7 @@ import PirmaryNav from "../../components/PrimaryNav";
 import ItemCard from "../../components/ItemCard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getItems } from "../../reducers/itemSlice";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -20,15 +21,17 @@ import "./index.css";
 
 const Index = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // console.log(store);
   // const data1 = store.getState()
   // console.log(data1);
   const items = useSelector((state) => state.items.items);
   const [data, setData] = useState();
   const[perPage,setPerPage]=useState([])
-  console.log(data);
+  // console.log(data);
   const [result, setResult] = useState();
   const [term, setTerm] = useState("");
+  
 
   const updateSearchTerm = (val) => {
     console.log(val);
@@ -38,7 +41,7 @@ const Index = () => {
 
   useEffect(() => {
     setData(items);
-    // setPerPage(items.slice(0,10))
+     setPerPage(items.slice(0,10))
   }, [items]);
 
   const [isSort, setIsSort] = useState(true);
@@ -60,7 +63,7 @@ const Index = () => {
   };
 
   const token = localStorage.getItem("token");
-console.log(data)
+// console.log(data)
   // useEffect(()=>{
 
   //     axios.get("http://localhost:3008/items", {
@@ -79,11 +82,20 @@ console.log(data)
 
   const onCardClick=(item)=>{
       console.log(`${item._id} is clicked`)
+      navigate('/parent/carddetails', {state:item})
+
   }
 
 
 
   const [searchTerm, setSearchTerm] = useState("");
+
+
+
+  const pageHandler=(event,pageNum)=>{
+    console.log(`${pageNum} is clicked `)
+     setPerPage(data&&data.slice((pageNum*10)-10,pageNum*10))
+  }
 
 
   //POP OVER  CODE
@@ -159,7 +171,7 @@ console.log(data)
         <Row>
         {
           
-          data&&data
+          perPage
             .filter((each) => {
               return each.title.toLowerCase().includes(searchTerm.toLowerCase());
             })
@@ -178,7 +190,7 @@ console.log(data)
         <div className="pagination-container">
         <Stack spacing={1}>
       
-      <Pagination count={data&&data.length} variant="outlined" shape="rounded" />
+      <Pagination count={data&&data.length/10} variant="outlined" shape="rounded" onChange={pageHandler}/>
     </Stack>
         </div>
         
