@@ -1,0 +1,24 @@
+.post-btn{
+    border-style:solid;
+    border-radius:5px;
+    border-color:palevioletred;
+    background-color:palevioletred;
+    padding:3px;
+    color:white;
+    padding:3px;
+    font-weight:600;
+}
+
+.post-btn:hover{
+    background-color:palevioletred;
+}
+
+.card1{
+    box-shadow:2px 2px 5px grey;
+    padding:15px;
+}
+
+.label{
+    color:palevioletred;
+    font-weight:600;
+}

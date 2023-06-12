@@ -1,7 +1,7 @@
 .address-btn{
     border-radius: 3px;
-    border-color:palevioletred;
-    color:palevioletred;
+    border-color:#ff4081;
+    color:#ff4081;
     font-weight:700;
     padding:3px;
     background-color: transparent;
@@ -25,4 +25,30 @@
     padding:3px;
     background-color: transparent;
     
+}
+
+
+ul.list{
+   
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.place-order-btn{
+    border-radius: 3px;
+    color:white;
+    border-color:#ff4081;
+    padding:3px;
+    font-weight:700;
+    padding:3px;
+    background-color: #ff4081;
+    margin:5px;
+}
+
+
+.payment-icon{
+    width:30px;
+    height:30px;
+    border-radius:30px;
 }

@@ -87,6 +87,7 @@ import './index.css'
     <Container>
         <Row>
             <Col>
+            <Card className='sign-form-card'>
             <Form onSubmit={formik.handleSubmit}>
                 <h1>Sign Up Page</h1>
             <Form.Group className='mb-3' controlId='username'>
@@ -167,6 +168,7 @@ import './index.css'
             </div>      
            
             </Form>
+            </Card>
             </Col>
         </Row>
     </Container>

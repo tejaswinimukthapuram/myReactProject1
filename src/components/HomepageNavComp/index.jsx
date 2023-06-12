@@ -8,11 +8,11 @@ import { Row, Col } from "react-bootstrap";
 import Badge from "@mui/material/Badge";
 import Stack from "@mui/material/Stack";
 import { useSelector } from "react-redux";
-import "./index.css";
 import { useEffect, useState } from "react";
 import Select, { selectClasses } from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+import ProfileComp from "../ProfileComp";
 import jwtDecode from "jwt-decode";
 
 //RESPONSIVE NAVBAR IMPORTS
@@ -42,9 +42,6 @@ function Index(props) {
 
   const items = useSelector((state) => state.items.items);
   const [data, setData] = useState();
-  //  console.log(items)
-
-  // console.log(data)
 
   const onCartClick = () => {
     navigate("/parent/cartpage");
@@ -54,72 +51,12 @@ function Index(props) {
     navigate("/parent/wishlist");
   };
 
-  const onSelectGender = (e) => {
-    // if(e.target.value==="women"){
-    //   console.log("Selected Category is women")
-    // }
-    // else if(e.target.value==="men"){
-    //   console.log("Selected Category is men")
-    // }else{
-    //   console.log("Selected Category is kids")
-    // }
-    console.log(e.target.value);
-  };
-
- 
-
   const goToAdminPage = () => {
     navigate("/parent/admin");
   };
 
   return (
     <>
-      {/* <Container fluid><Row><Col sm='12'> */}
-      {/* <Navbar className="nav" variant="dark">
-        <Container>
-          <Navbar.Brand href="/parent/home">
-            <img
-              alt=""
-              src="https://i.pinimg.com/236x/b7/8e/16/b78e163a3a551906642dce556cc58d3e.jpg"
-              width="50"
-              height="50"
-              className="d-inline-block "
-              style={{borderRadius:"50px", marginRight:"5px"}}
-            />
-           Shopify
-          </Navbar.Brand>
-
-          <div className="input-group">
-            <InputGroup className="mb-3 ">
-              <InputGroup.Text id="basic-addon1">
-                <span className="material-icons-outlined ">search</span>
-              </InputGroup.Text>
-              <Form.Control
-                placeholder="Search for Products brands and more"
-                aria-label="Search"
-                aria-describedby="basic-addon1"
-                onChange={(e) => {
-                  updateSearchTerm(e.target.value);
-                  setSearchTerm(e.target.value);
-                }}
-              />
-            </InputGroup>
-          </div>
-          <div className="d-flex flex-row">
-            <span className="material-icons-outlined fav-icon ">
-              favorite_border
-            </span>
-
-            <button className='cart-btn' onClick={onCartClick}><span className="material-icons-outlined fav-icon">
-              shopping_cart
-            </span></button>
-            <span className="material-icons-outlined fav-icon">person</span>
-            <button onClick={onLogout} className="logout-btn">Logout</button>
-         
-          </div>
-        </Container>
-      </Navbar> */}
-
       <Navbar collapseOnSelect expand="lg" variant="dark" className="nav">
         <Container>
           <Navbar.Brand href="/parent/home" className="brand-name">
@@ -133,7 +70,7 @@ function Index(props) {
             />
             Shopify
           </Navbar.Brand>
-          {/* <div className="input-group">
+          <div className="input-group">
             <InputGroup className="mb-3 ">
               <InputGroup.Text id="basic-addon1">
                 <span className="material-icons-outlined ">search</span>
@@ -144,34 +81,13 @@ function Index(props) {
                 aria-describedby="basic-addon1"
                 onChange={(e) => {
                   updateSearchTerm(e.target.value);
+                  //   props.getFilteredData();
                   // setSearchTerm(e.target.value);
                 }}
               />
             </InputGroup>
-          </div> */}
-          {/* SELECT INDICATOR MUI CODE */}
-
-          <div>
-            <Select
-              placeholder="Select a category…"
-              indicator={<KeyboardArrowDown />}
-              sx={{
-                width: 230,
-                backgroundColor: "transparent",
-                color: "white",
-              }}
-              onChange={onSelectGender}
-            >
-              <Option value="women">Women</Option>
-              <Option value="men">Men</Option>
-              <Option value="kids">Kids</Option>
-            </Select>
-            {/* <select  onChange={(e)=>onSelectGender(e)} placeholder="Select a category...">
-      <option value="women">Women</option>
-      <option value="men">Men</option>
-      <option value="kids">Kids</option>
-    </select> */}
           </div>
+
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
@@ -198,15 +114,19 @@ function Index(props) {
                   </button>
                 </Stack>
 
-                <span className="material-icons-outlined fav-icon">person</span>
+                <ProfileComp />
 
-                {decoded.username === "Admin" ? (
+                {/* {decoded.username === "Admin" ? (
                   <button onClick={goToAdminPage} className="nav-item">
                     Admin
                   </button>
                 ) : (
                   ""
-                )}
+                )} */}
+
+                <button onClick={goToAdminPage} className="nav-item">
+                  Admin
+                </button>
 
                 <button onClick={onLogout} className="logout-btn">
                   Logout

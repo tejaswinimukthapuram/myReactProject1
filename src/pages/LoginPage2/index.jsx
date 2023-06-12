@@ -13,7 +13,8 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
-import { useState, useEffect } from "react"
+import { useState, useEffect,useContext } from "react"
+import { UserContext } from '../../App';
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import axios from 'axios'
@@ -25,6 +26,8 @@ import './index.css'
   const Index = () => {
     const navigate = useNavigate();
     const [userlogged, setUserLogged] = useState("");
+    const [userDetails,setUserDetails]=useContext(UserContext);
+    
 
     useEffect(()=>{
         axios.get("http://localhost:3008/userslist")
@@ -69,28 +72,30 @@ import './index.css'
         onSubmit: (values) => {
             
        console.log("Form Submitted")
-       console.log(values)
-          
+        console.log(values)
+       setUserDetails(values)
+    
+        localStorage.setItem("userdetails", JSON. stringify(values))
             axios.post("http://localhost:3008/userslist/login", values)
             .then((res)=>{
                 console.log(res)
                 const token = res.data.token
+                const refreshtoken = res.data.refreshtoken
+
                 if(token){
                     setUserLogged("Login success")
                     // console.log(document.cookie.sessionCookie)
                     // console.log(res.cookie)
                     localStorage.setItem("token", token)
+                    localStorage.setItem('refreshtoken', refreshtoken)
                     localStorage.setItem("userMail",values.email)
+                    // console.log(values)
+                    // console.log(userDetails)
                     navigate("/parent/home")
 
+
                 }
-                
-
-              
-                
-
-                
-               
+        
             })
             .catch((err)=>{
                 console.log(err)
@@ -98,7 +103,7 @@ import './index.css'
             })
       }
     })
-    
+ 
   return (
     <>
     <Container>

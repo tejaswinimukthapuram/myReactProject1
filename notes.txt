@@ -1,0 +1,2 @@
+if i click on card in home page it should navigate to carddetails page so for this if I use "Link to" I can get the details page but if i copy that address and try it 
+incognito tab it throws error hence use useParams.

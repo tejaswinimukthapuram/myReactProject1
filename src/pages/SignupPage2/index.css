@@ -7,3 +7,12 @@
  .errors{
      color:red;
  }
+
+ .sign-form-card{
+    padding:10px;
+    box-shadow: 1px 1px 5px grey;
+    width:50vw;
+    height:70vh;
+
+  
+ }

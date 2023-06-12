@@ -1,0 +1,19 @@
+.each-order-card {
+  /* background-color: #f5f5f5; */
+}
+
+.orders-page-card {
+  width: 40%;
+  overflow: scroll;
+  background-color:#f5f5f5;
+}
+
+.order-page-main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+
